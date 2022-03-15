@@ -1,0 +1,55 @@
+{
+    "manifestVersion": 1,
+    "id": "prtg-sensor",
+    "version": "1.0.0",
+    "name": "Manage PRTG Sensor",
+    "description": "Allows for pausing, resuming and monitoring PRTG sensors",
+    "publisher": "wearetriple",
+    "public": true,
+    "categories": ["Azure Pipelines"],
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "icons": {
+        "default": "assets/logo.png"
+    },
+    "tags": [
+        "PRTG",
+        "Sensor",
+        "Pauze",
+        "Resume",
+        "Monitor",
+        "Network"
+    ],
+    "content": {
+        "license": {
+          "path": "LICENSE"
+        },
+        "details": {
+          "path": "README.md"
+        }
+    },
+    "repository": {
+        "type": "git",
+        "uri": "https://github.com/wearetriple/ados-extension-prtg"
+    },
+    "contributions": [
+        {
+            "id": "prtg",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "prtg"
+            }
+        }
+    ],
+    "files": [
+        {
+            "path": "prtg"
+        }
+    ]
+}
