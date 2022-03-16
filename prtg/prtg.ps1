@@ -22,22 +22,37 @@ elseif ($Action -eq "resume") {
 }
 elseif ($Action -eq "monitor") {
 
-    $MaxPeriod = [TimeSpan]::Parse($MonitorPeriod)
-    $Start = [DateTime]::UtcNow
+    $MaxPeriod = [System.TimeSpan]::Parse($MonitorPeriod)
+
+    $Start = Get-Date
+    $attempt = 0;
+    $delay = [math]::Ceiling($MaxPeriod.TotalSeconds / 120.0);
 
     do
     {
+        $sleep = ($attempt * $delay)
+
+        if ($sleep -gt 0)
+        {
+            Write-Host "Checking status after $sleep s"
+
+            Start-Sleep $sleep
+        }
 
         $Uri = "${PRTGEndpoint}/getobjectstatus.htm?id=${PRTGSensorId}&name=status&show=text&username=${PRTGUsername}&passhash=${PRTGPasshash}"
 
         [xml]$response = Invoke-RestMethod -Method Get -Uri $Uri
 
         if ($response.prtg.result -eq 'Up ') {
+
+            Write-Host "Sensor is Up"
+
             exit;
         }
 
+        $attempt++
     }
-    while ($Start.Add($MaxPeriod) > [DateTime]::UtcNow);
+    while ($Start.Add($MaxPeriod) -gt (Get-Date));
 
     throw "Sensor did not get status Up within allowed timespan"
 }
