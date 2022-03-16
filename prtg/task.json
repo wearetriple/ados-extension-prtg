@@ -9,7 +9,7 @@
     "version": {
         "major": 1,
         "minor": 0,
-        "patch": 0,
+        "patch": 1,
         "isTest": false
     },
     "demands": [
@@ -42,7 +42,7 @@
             "name": "PRTGPasshash",
             "label": "PRTG Passhash",
             "defaultValue": "",
-            "required": false,
+            "required": true,
             "type": "string",
             "helpMarkDown": "Pashash for PRTG authentication",
             "groupName": ""
@@ -100,7 +100,7 @@
             "groupName": ""
         }
     ],
-    "instanceNameFormat": "$(Action) for PRTG Sensor $(PRTGSensorId)",
+    "instanceNameFormat": "$(Action) PRTG Sensor $(PRTGSensorId)",
     "execution": {
         "PowerShell3": {
             "target": "prtg.ps1"

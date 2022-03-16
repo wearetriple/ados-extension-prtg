@@ -31,10 +31,11 @@ elseif ($Action -eq "monitor") {
     do
     {
         $sleep = ($attempt * $delay)
+        $now = Get-Date
 
         if ($sleep -gt 0)
         {
-            Write-Host "Checking status after $sleep s"
+            Write-Host "${now}: Checking status in $sleep s"
 
             Start-Sleep $sleep
         }
@@ -48,6 +49,10 @@ elseif ($Action -eq "monitor") {
             Write-Host "Sensor is Up"
 
             exit;
+        }
+        else 
+        {
+            Write-Host "Sensor status is ${response.prtg.result}"
         }
 
         $attempt++
