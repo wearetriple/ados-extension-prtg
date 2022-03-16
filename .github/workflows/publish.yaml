@@ -1,0 +1,11 @@
+name: Publish to marketplace
+on:
+  push:
+     branches: [main]
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - run: npm install -g tfx-cli
+    - run: tfx extension publish -t ${{ secrets.PERSONAL_ACCESS_TOKEN }} 
