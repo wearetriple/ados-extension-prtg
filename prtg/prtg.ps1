@@ -40,19 +40,23 @@ elseif ($Action -eq "monitor") {
             Start-Sleep $sleep
         }
 
+        $now = Get-Date
+
         $Uri = "${PRTGEndpoint}/getobjectstatus.htm?id=${PRTGSensorId}&name=status&show=text&username=${PRTGUsername}&passhash=${PRTGPasshash}"
 
         [xml]$response = Invoke-RestMethod -Method Get -Uri $Uri
 
-        if ($response.prtg.result -eq 'Up ') {
+        $status = $response.prtg.result;
 
-            Write-Host "Sensor is Up"
+        if ($status -eq 'Up ') {
+
+            Write-Host "${now}: Sensor is Up"
 
             exit;
         }
         else 
         {
-            Write-Host "Sensor status is ${response.prtg.result}"
+            Write-Host "${now}: Sensor status is $status"
         }
 
         $attempt++
