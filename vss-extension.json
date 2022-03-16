@@ -1,12 +1,14 @@
 {
     "manifestVersion": 1,
     "id": "prtg-sensor",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "name": "Manage PRTG Sensor",
     "description": "Allows for pausing, resuming and monitoring PRTG sensors",
     "publisher": "wearetriple",
     "public": true,
-    "categories": ["Azure Pipelines"],
+    "categories": [
+        "Azure Pipelines"
+    ],
     "targets": [
         {
             "id": "Microsoft.VisualStudio.Services"
@@ -25,10 +27,10 @@
     ],
     "content": {
         "license": {
-          "path": "LICENSE"
+            "path": "LICENSE"
         },
         "details": {
-          "path": "README.md"
+            "path": "README.md"
         }
     },
     "repository": {

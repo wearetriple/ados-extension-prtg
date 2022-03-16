@@ -77,7 +77,7 @@
                 "pause": "Pause sensor",
                 "resume": "Resume sensor",
                 "monitor": "Monitor sensor"
-              },
+            },
             "properties": {},
             "name": "Action",
             "label": "Action",
