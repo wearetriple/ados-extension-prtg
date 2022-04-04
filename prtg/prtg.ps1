@@ -9,11 +9,15 @@ $MonitorPeriod = Get-VstsInput -Name "MonitorPeriod"
 
 if ($Action -eq "pause") {
 
+    Write-Host "Invoking '${PRTGEndpoint}/pause.htm?id=${PRTGSensorId}&pausemsg=Paused_By_Automation&action=0&username=x&passhash=x'"
+
     $Uri = "${PRTGEndpoint}/pause.htm?id=${PRTGSensorId}&pausemsg=Paused_By_Automation&action=0&username=${PRTGUsername}&passhash=${PRTGPasshash}"
 
     Invoke-RestMethod -Method Get -Uri $Uri
 }
 elseif ($Action -eq "resume") {
+
+    Write-Host "Invoking '${PRTGEndpoint}/pause.htm?id=${PRTGSensorId}&pausemsg=Paused_By_Automation&action=1&username=x&passhash=x'"
 
     $Uri = "${PRTGEndpoint}/pause.htm?id=${PRTGSensorId}&action=1&username=${PRTGUsername}&passhash=${PRTGPasshash}"
 
@@ -41,6 +45,8 @@ elseif ($Action -eq "monitor") {
         }
 
         $now = Get-Date
+
+        Write-Host "Invoking '${PRTGEndpoint}/getobjectstatus.htm?id=${PRTGSensorId}&name=status&show=text&username=x&passhash=x'"
 
         $Uri = "${PRTGEndpoint}/getobjectstatus.htm?id=${PRTGSensorId}&name=status&show=text&username=${PRTGUsername}&passhash=${PRTGPasshash}"
 
