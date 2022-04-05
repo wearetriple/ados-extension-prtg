@@ -1,7 +1,7 @@
 {
     "manifestVersion": 1,
     "id": "prtg-sensor",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "name": "Manage PRTG Sensor",
     "description": "Allows for pausing, resuming and monitoring PRTG sensors",
     "publisher": "wearetriple",

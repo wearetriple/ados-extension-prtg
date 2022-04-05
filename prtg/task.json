@@ -9,7 +9,7 @@
     "version": {
         "major": 1,
         "minor": 0,
-        "patch": 3,
+        "patch": 4,
         "isTest": false
     },
     "demands": [
@@ -29,7 +29,7 @@
             "properties": {},
             "name": "PRTGUsername",
             "label": "PRTG Username",
-            "defaultValue": "",
+            "defaultValue": "$(PRTG.Username)",
             "required": true,
             "type": "string",
             "helpMarkDown": "Username for PRTG authentication",
@@ -41,7 +41,7 @@
             "properties": {},
             "name": "PRTGPasshash",
             "label": "PRTG Passhash",
-            "defaultValue": "",
+            "defaultValue": "$(PRTG.Passhash)",
             "required": true,
             "type": "string",
             "helpMarkDown": "Pashash for PRTG authentication",
@@ -53,7 +53,7 @@
             "properties": {},
             "name": "PRTGEndpoint",
             "label": "PRTG Endpoint",
-            "defaultValue": "",
+            "defaultValue": "$(PRTG.Endpoint)",
             "required": true,
             "type": "string",
             "helpMarkDown": "Http endpoint for PRTG (https://prtg-public.example.com/api)",
