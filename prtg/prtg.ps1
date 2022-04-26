@@ -17,9 +17,15 @@ if ($Action -eq "pause") {
 }
 elseif ($Action -eq "resume") {
 
-    Write-Host "Invoking '${PRTGEndpoint}/pause.htm?id=${PRTGSensorId}&pausemsg=Paused_By_Automation&action=1&username=x&passhash=x'"
+    Write-Host "Invoking '${PRTGEndpoint}/pause.htm?id=${PRTGSensorId}&action=1&username=x&passhash=x'"
 
     $Uri = "${PRTGEndpoint}/pause.htm?id=${PRTGSensorId}&action=1&username=${PRTGUsername}&passhash=${PRTGPasshash}"
+
+    Invoke-RestMethod -Method Get -Uri $Uri
+
+    Write-Host "Invoking '${PRTGEndpoint}/scannow.htm?id=${PRTGSensorId}&username=x&passhash=x'"
+
+    $Uri = "${PRTGEndpoint}/scannow.htm?id=${PRTGSensorId}&username=${PRTGUsername}&passhash=${PRTGPasshash}"
 
     Invoke-RestMethod -Method Get -Uri $Uri
 
