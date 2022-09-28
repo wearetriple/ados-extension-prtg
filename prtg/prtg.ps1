@@ -1,4 +1,4 @@
-Import-Module ./ps_modules/VstsTaskSdk/VstsTaskSdk.psm1
+Import-Module .\ps_modules\VstsTaskSdk\VstsTaskSdk.psm1
 
 $PRTGUsername = Get-VstsInput -Name "PRTGUsername"
 $PRTGPasshash = Get-VstsInput -Name "PRTGPasshash"

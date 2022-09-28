@@ -9,7 +9,7 @@
     "version": {
         "major": 1,
         "minor": 1,
-        "patch": 1,
+        "patch": 2,
         "isTest": false
     },
     "demands": [ ],
@@ -100,7 +100,7 @@
     ],
     "instanceNameFormat": "$(Action) PRTG Sensor $(PRTGSensorId)",
     "execution": {
-        "PowerShell": {
+        "PowerShell3": {
             "target": "prtg.ps1"
         }
     }
