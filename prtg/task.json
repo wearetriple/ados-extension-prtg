@@ -8,13 +8,11 @@
     "name": "Manage PRTG sensor",
     "version": {
         "major": 1,
-        "minor": 0,
-        "patch": 5,
+        "minor": 1,
+        "patch": 0,
         "isTest": false
     },
-    "demands": [
-        "azureps"
-    ],
+    "demands": [ ],
     "friendlyName": "Manage PRTG sensor",
     "description": "Allows for pausing, resuming and monitoring PRTG sensors",
     "helpMarkDown": "[More information..](https://github.com/wearetriple/ados-extension-prtg)",
