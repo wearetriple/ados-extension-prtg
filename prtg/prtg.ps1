@@ -6,12 +6,15 @@ $PRTGEndpoint = Get-VstsInput -Name "PRTGEndpoint"
 $PRTGSensorId = Get-VstsInput -Name "PRTGSensorId"
 $Action = Get-VstsInput -Name "Action"
 $MonitorPeriod = Get-VstsInput -Name "MonitorPeriod"
+$PausePeriod = Get-VstsInput -Name "PausePeriod"
 
 if ($Action -eq "pause") {
 
-    Write-Host "Invoking '${PRTGEndpoint}/pause.htm?id=${PRTGSensorId}&pausemsg=Paused_By_Automation&action=0&username=x&passhash=x'"
+    $Period = [System.Math]::Ceiling([System.TimeSpan]::Parse($PausePeriod).TotalMinutes)
 
-    $Uri = "${PRTGEndpoint}/pause.htm?id=${PRTGSensorId}&pausemsg=Paused_By_Automation&action=0&username=${PRTGUsername}&passhash=${PRTGPasshash}"
+    Write-Host "Invoking '${PRTGEndpoint}/pauseobjectfor.htm?id=${PRTGSensorId}&pausemsg=Paused_By_Automation&duration=${Period}&username=x&passhash=x'"
+
+    $Uri = "${PRTGEndpoint}/pauseobjectfor.htm?id=${PRTGSensorId}&pausemsg=Paused_By_Automation&duration=${Period}&username=${PRTGUsername}&passhash=${PRTGPasshash}"
 
     Invoke-RestMethod -Method Get -Uri $Uri
 }

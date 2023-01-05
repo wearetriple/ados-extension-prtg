@@ -8,8 +8,8 @@
     "name": "Manage PRTG sensor",
     "version": {
         "major": 1,
-        "minor": 1,
-        "patch": 2,
+        "minor": 2,
+        "patch": 0,
         "isTest": false
     },
     "demands": [ ],
@@ -95,6 +95,18 @@
             "required": false,
             "type": "string",
             "helpMarkDown": "Max time to monitor sensor (hh:mm:ss) -- will throw an error when sensor is not OK after period",
+            "groupName": ""
+        },
+        {
+            "aliases": [],
+            "options": {},
+            "properties": {},
+            "name": "PausePeriod",
+            "label": "Pause Period",
+            "defaultValue": "00:10:00",
+            "required": false,
+            "type": "string",
+            "helpMarkDown": "Max time to pause sensor (hh:mm:ss) -- PRTG will automatically resume sensor after period if the pipeline fails to resume the sensor (rounded up to nearest whole minute)",
             "groupName": ""
         }
     ],
