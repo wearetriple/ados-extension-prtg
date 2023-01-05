@@ -103,7 +103,7 @@
             "properties": {},
             "name": "PausePeriod",
             "label": "Pause Period",
-            "defaultValue": "00:10:00",
+            "defaultValue": "00:15:00",
             "required": false,
             "type": "string",
             "helpMarkDown": "Max time to pause sensor (hh:mm:ss) -- PRTG will automatically resume sensor after period if the pipeline fails to resume the sensor (rounded up to nearest whole minute)",
