@@ -42,8 +42,11 @@ elseif ($Action -eq "resume") {
 elseif ($Action -eq "monitor") {
 
     $delay = 10
+    $MaxPeriod = [System.TimeSpan]::FromMinutes(10)
     try {
-        $delay = [math]::Ceiling([System.TimeSpan]::Parse($MonitorPeriod).TotalMinutes / 2.0)
+        $MaxPeriod = [System.TimeSpan]::Parse($MonitorPeriod);
+
+        $delay = [math]::Ceiling($MaxPeriod.TotalMinutes / 2.0)
     }
     catch {
         Write-Error "Failed to parse Monitor Period: $_"
