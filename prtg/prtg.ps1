@@ -10,7 +10,13 @@ $PausePeriod = Get-VstsInput -Name "PausePeriod"
 
 if ($Action -eq "pause") {
 
-    $Period = [System.Math]::Ceiling([System.TimeSpan]::Parse($PausePeriod).TotalMinutes)
+    $Period = 10
+    try {
+        $Period = [math]::Ceiling([System.TimeSpan]::Parse($PausePeriod).TotalMinutes)
+    }
+    catch {
+        Write-Error "Failed to parse Pause Period: $_"
+    }
 
     Write-Host "Invoking '${PRTGEndpoint}/pauseobjectfor.htm?id=${PRTGSensorId}&pausemsg=Paused_By_Automation&duration=${Period}&username=x&passhash=x'"
 
@@ -35,11 +41,16 @@ elseif ($Action -eq "resume") {
 }
 elseif ($Action -eq "monitor") {
 
-    $MaxPeriod = [System.TimeSpan]::Parse($MonitorPeriod)
+    $delay = 10
+    try {
+        $delay = [math]::Ceiling([System.TimeSpan]::Parse($MonitorPeriod).TotalMinutes / 2.0)
+    }
+    catch {
+        Write-Error "Failed to parse Monitor Period: $_"
+    }
 
     $Start = Get-Date
     $attempt = 0;
-    $delay = [math]::Ceiling($MaxPeriod.TotalSeconds / 120.0);
 
     do
     {
